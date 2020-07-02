@@ -14,7 +14,7 @@ stages:
       jobVar: BuildJobVar
     steps:
     - bash: echo BuildStageJob1
-    - bash: echo $(PipelineLevelVariable) | ${stageVar} | ${jobVar}
+    - bash: echo $(PipelineLevelVariable) | $(stageVar) | $(jobVar)
 
   - job: BuildStageJob2
     steps:
