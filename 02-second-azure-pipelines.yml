@@ -17,30 +17,37 @@ stages:
     - bash: echo $(PipelineLevelVariable)
     - bash: echo $(stageVar)
     - bash: echo $(jobVar)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.SourceDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
 
-  - job: BuildStageJob2
-    steps:
-    - bash: echo BuildStageJob2
-    - bash: echo $(PipelineLevelVariable)
-    - bash: echo $(stageVar)
-    - bash: echo $(jobVar)
+#   - job: BuildStageJob2
+#     steps:
+#     - bash: echo BuildStageJob2
+#     - bash: echo $(PipelineLevelVariable)
+#     - bash: echo $(stageVar)
+#     - bash: echo $(jobVar)
 
-- stage: DevDeployStage
-  dependsOn: BuildStage
-  jobs:
-  - job: DevDeployStageJob
-    steps:
-     - bash: echo DevDeployStageJob
+# - stage: DevDeployStage
+#   dependsOn: BuildStage
+#   jobs:
+#   - job: DevDeployStageJob
+#     steps:
+#      - bash: echo DevDeployStageJob
 
-- stage: QADeployStage
-  dependsOn: BuildStage
-  jobs:
-  - job: QADeployStageJob
-    steps:
-     - bash: echo QADeployStageJob
+# - stage: QADeployStage
+#   dependsOn: BuildStage
+#   jobs:
+#   - job: QADeployStageJob
+#     steps:
+#      - bash: echo QADeployStageJob
 
-- stage: PRDeployStage
-  jobs:
-  - job: PRDeployStageJob
-    steps:
-     - bash: echo PRDeployStageJob
+# - stage: PRDeployStage
+#   jobs:
+#   - job: PRDeployStageJob
+#     steps:
+#      - bash: echo PRDeployStageJob
