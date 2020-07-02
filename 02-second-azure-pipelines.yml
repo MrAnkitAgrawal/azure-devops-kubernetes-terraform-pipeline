@@ -6,10 +6,15 @@ pool:
 
 stages:
 - stage: BuildStage
+  variables:
+    stageVar: BuildStageVar
   jobs:
   - job: BuildStageJob1
+    variables: 
+      jobVar: BuildJobVar
     steps:
     - bash: echo BuildStageJob1
+    - bash: echo $(PipelineLevelVariable) | ${stageVar} | ${jobVar}
 
   - job: BuildStageJob2
     steps:
