@@ -21,6 +21,9 @@ stages:
   - job: BuildStageJob2
     steps:
     - bash: echo BuildStageJob2
+    - bash: echo $(PipelineLevelVariable)
+    - bash: echo $(stageVar)
+    - bash: echo $(jobVar)
 
 - stage: DevDeployStage
   dependsOn: BuildStage
